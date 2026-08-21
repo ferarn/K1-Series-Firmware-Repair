@@ -1,0 +1,25 @@
+General Notes:
+- Board models are distinguished primarily by the main processor chip models X2000, X2000E, and X2600E, corresponding to the respective mainboard versions of CR4CU220812S11 (S11), CR4CU220812S12 (S12), and CR4SU200382C13 (C13)
+- X2000E (S12) images work for all corresponding models (K1/K1C/K1Max/K1SE on X2000E chip +/- CFS-C), using internal configs to distinguish between machines based upon the mainboard's sn_mac partition. 2025 (C13, X2600E) images are separated by machine model in order to (WIP)
+- 2025 images utilize an AES encrypted kernel and are decrypted upon upload via onboard e-fuses with baked in security keys
+- S11 Images are simply 7z packages of the binaries in partial file format, with the password $1$cxswfile$u/lZJ5DdXlEL9mVsL/rt70
+
+Specific Notes:
+  CR4CU220812S12_ota_X2000E_V1.1.0.26.20251114.img:
+  - Recovery image for 2025 (C13) models stuck on X2000E (S12) firmwares
+  - Contains the binaries for CR4SU200382C13_ota_K1C-2025_V1.1.0.26.20251029S
+  - May be useful for unbricking
+
+  CR4CU220812S11_ota_img_V1.3.3.50.img:
+  - Recovery image for X2000E (S12) models stuck on X2000 (S11) firmwares
+  - Contains the binaries for CR4CU220812S12_ota_X2000E_V1.1.0.26.20251113
+  - Works with S11 binaries after flashing a bricked S12 to allow upgrading onto proper S12 firmware branches
+
+  CR4CU220812S12_ota_X2000E_V9.9.9.99.20251030.img:
+  - Downgrade image for S12 models that allows switching to different firmware branches, such as the original CFS using CR4CU220812S11_ota_img_V2.3.5.34.img
+  - Contains software for a variety of features which never completed development, or were abandoned, such as a laser module
+  - May be useful for modding
+
+  CR4CU220812S11_ota_img_V2.3.5.34.img:
+  - Firmware for models using the original CFS
+  - Functional, but seemingly abandoned in favor of the CFS-C
