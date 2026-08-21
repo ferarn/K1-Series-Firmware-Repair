@@ -1,0 +1,23 @@
+- The partition sn_mac is unique to each machine, and if missing or corrupted must be generated into a unique sn_mac.bin using the tool provided at (WIP), and applied before any other recovery file
+- S11 boards can be powered from the USB via the computer itself, but not the S12 or C13
+- Mainboards with the Micro-USB connector are rather cramped, and the connector fragile, but there are open through-hole pin slots right behind it which are easily accessed and connected to with minor soldering or tinkering capabilities, and I'd recommend attaching a regular pin connector and making a regular USB to pin connector if planning on using flash utilities often
+- The cloner configuration level password is !@#
+
+Instructions:
+1. Download and unzip the cloner tool.
+2. Download and unzip the top folder of the specific repair package, but not the subfolder marked "Unbrick".
+3. If on Windows, enter the /scripts/ folder inside the cloner package and activate the "install_cloner_driver.bat" utility (only needs to be done once).
+4. Return to the main folder and launch the cloner tool via cloner.exe.
+5. Select the Load Image button, and select the zipped "Unbrick" file.
+6. Find and access the machine's Micro-USB or USB-C secondary port on the mainboard, found underneath the machine after removing the bottom feet and metal base (If a Micro-Usb, ensure the cable used is an OTG with data). Plug the cable into the machine, but not yet into the computer with the cloner utility.
+7. Ensure the board has at least 20V supplied, either from the internal supply or a sufficient power supply unit.
+8. Toggle the machine off if still on, then hold down both the "Boot" and "Reset" button on the mainboard while switching the power on.
+9. Release first the "Reset" button, then the "Boot".
+10. Press "Start" on the cloner UI, then plug the OTG cable into the computer (it may be necessary to unplug and replug the computer cable, then hold and release the "Boot" and "Reset" buttons in order again while the machine is still on).
+11. Repeat from step 8 as necessary until all sections show green on the cloner UI, then select "Stop" quickly, as the utility will loop and keep trying to write (file erasure is turned off in the zipped configs, so it shouldn't harm anything if left to continue a little).
+12. Turn off the machine and unplug from the main board, the flashing part is done! You can reassemble the base of the machine.
+13. Take the firmware images included in the "Repair" file and place them on an otherwise empty USB drive formatted with a FAT filesystem, like the ones included with the machine.
+14. Plug them into the machine's front port (if there's a shield in place because of the CFS or CFS-C, an adapter or extension may be necessary, as the machine may not recognize the usual adapter box).
+15. Start the machine, and accept the prompts to upgrade each time it reboots.
+16. If all has gone correctly, repair success!
+17. The firmware image currently on the machine is a low version in whichever branch you've chosen in order to allow flexibility in choosing a final version, whether for switching branches, using a lower version than the latest, or using a custom image.
